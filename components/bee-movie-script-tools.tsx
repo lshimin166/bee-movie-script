@@ -41,9 +41,9 @@ export default function BeeMovieScriptTools() {
     { name: "Discord", limit: 2000, color: "bg-indigo-500 hover:bg-indigo-600" },
     { name: "Twitter", limit: 280, color: "bg-blue-500 hover:bg-blue-600" },
     { name: "Reddit", limit: 10000, color: "bg-orange-500 hover:bg-orange-600" },
-    { name: "YouTube", limit: 5000, color: "bg-red-500 hover:bg-red-600" },
-    { name: "Messenger", limit: 20000, color: "bg-blue-600 hover:bg-blue-700" },
-    { name: "WhatsApp", limit: 4096, color: "bg-green-500 hover:bg-green-600" },
+    { name: "YouTube", limit: 10000, color: "bg-red-500 hover:bg-red-600" },
+    { name: "Instagram", limit: 2200, color: "bg-pink-500 hover:bg-pink-600" },
+    { name: "WhatsApp", limit: 65536, color: "bg-green-500 hover:bg-green-600" },
   ]
 
   // 自动加载剧本数据
