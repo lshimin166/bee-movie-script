@@ -87,10 +87,30 @@ export default function HeroSectionClient() {
     await copyToClipboard(randomQuote)
   }
 
+  const handleCopyLink = async () => {
+    try {
+      const url = window.location.href
+      await navigator.clipboard.writeText(url)
+      toast({
+        title: "Link copied! 🔗",
+        description: "Page URL copied to clipboard successfully!",
+        variant: "default",
+        className: "bg-white border-green-200 shadow-lg",
+      })
+    } catch (err) {
+      toast({
+        title: "Copy failed",
+        description: "Failed to copy link to clipboard. Please try again.",
+        variant: "destructive",
+      })
+    }
+  }
+
   return (
     <HeroSection
       onCopyScript={handleCopyScript}
       onRandomQuote={handleRandomQuote}
+      onCopyLink={handleCopyLink}
     />
   )
 }

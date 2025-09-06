@@ -7,9 +7,10 @@ import { Copy, Shuffle, Twitter, Facebook, Share2, MessageCircle } from "lucide-
 interface HeroSectionProps {
   onCopyScript: () => void
   onRandomQuote: () => void
+  onCopyLink: () => void
 }
 
-export function HeroSection({ onCopyScript, onRandomQuote }: HeroSectionProps) {
+export function HeroSection({ onCopyScript, onRandomQuote, onCopyLink }: HeroSectionProps) {
   const handleSocialShare = (platform: string) => {
     const url = window.location.href
     const text = "Check out this amazing Bee Movie Script copy and paste tool! 🐝"
@@ -22,7 +23,7 @@ export function HeroSection({ onCopyScript, onRandomQuote }: HeroSectionProps) {
     }
 
     if (platform === "copy") {
-      navigator.clipboard.writeText(`${text} ${url}`)
+      onCopyLink()
       return
     }
 
