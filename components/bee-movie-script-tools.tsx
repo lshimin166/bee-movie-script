@@ -1,24 +1,40 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { useToast } from "@/hooks/use-toast"
-import { Copy, Shuffle, Zap, Share2, Eye, EyeOff } from "lucide-react"
+import { Copy, Shuffle, Zap, Share2, Eye, EyeOff, Loader2 } from "lucide-react"
 
-interface BeeMovieScriptToolsProps {
+interface ScriptData {
   scriptContent: string
   popularQuotes: string[]
 }
 
-export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: BeeMovieScriptToolsProps) {
+export default function BeeMovieScriptTools() {
   const [selectedFormat, setSelectedFormat] = useState<"normal" | "nospaces" | "segments">("normal")
   const [platformLimit, setPlatformLimit] = useState(2000)
   const [hideCharacters, setHideCharacters] = useState(false)
+  const [scriptData, setScriptData] = useState<ScriptData | null>(null)
+  const [isLoading, setIsLoading] = useState(true) // 初始为true，页面加载时就开始加载
+  const [error, setError] = useState<string | null>(null)
   const { toast } = useToast()
+
+  // 页面加载时自动加载剧本数据
+  useEffect(() => {
+    const initializeData = async () => {
+      try {
+        await loadScriptData()
+      } catch (error) {
+        // Error already handled in loadScriptData
+      }
+    }
+    
+    initializeData()
+  }, [])
 
   const platforms = [
     { name: "Discord", limit: 2000, color: "bg-indigo-500 hover:bg-indigo-600" },
@@ -28,6 +44,40 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
     { name: "Messenger", limit: 20000, color: "bg-blue-600 hover:bg-blue-700" },
     { name: "WhatsApp", limit: 4096, color: "bg-green-500 hover:bg-green-600" },
   ]
+
+  // 自动加载剧本数据
+  const loadScriptData = async (): Promise<ScriptData> => {
+    if (scriptData) return scriptData // 已经加载过了，直接返回缓存
+
+    if (!isLoading) setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/script')
+      if (!response.ok) {
+        throw new Error('Failed to load script data')
+      }
+      
+      const result = await response.json()
+      if (result.success) {
+        setScriptData(result.data)
+        return result.data
+      } else {
+        throw new Error(result.error || 'Unknown error')
+      }
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to load script'
+      setError(errorMessage)
+      toast({
+        title: "Loading failed",
+        description: "Failed to load Bee Movie script. Please try again.",
+        variant: "destructive",
+      })
+      throw err
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const copyToClipboard = async (text: string) => {
     try {
@@ -49,7 +99,6 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
     return text
       .split("\n")
       .map((line) => {
-        // Remove character names (text before colon and tab)
         if (line.includes(":") || line.includes("\t")) {
           const colonIndex = line.indexOf(":")
           const tabIndex = line.indexOf("\t")
@@ -93,16 +142,71 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
     return segments
   }
 
-  const getRandomSegment = () => {
-    const randomIndex = Math.floor(Math.random() * popularQuotes.length)
-    return processText(popularQuotes[randomIndex])
+  // 需要剧本数据的操作（数据应该已经加载了）
+  const handleCopyAction = async (action: (data: ScriptData) => string) => {
+    if (!scriptData) {
+      toast({
+        title: "Data not ready",
+        description: "Script data is still loading. Please try again.",
+        variant: "destructive",
+      })
+      return
+    }
+    
+    try {
+      const text = action(scriptData)
+      await copyToClipboard(text)
+    } catch (error) {
+      // Error already handled in copyToClipboard
+    }
   }
 
-  const getOpeningSection = () => {
-    const opening = scriptContent.substring(0, 2000) + "..."
+  const getRandomSegment = (data: ScriptData) => {
+    const randomIndex = Math.floor(Math.random() * data.popularQuotes.length)
+    return processText(data.popularQuotes[randomIndex])
+  }
+
+  const getOpeningSection = (data: ScriptData) => {
+    const opening = data.scriptContent.substring(0, 2000) + "..."
     return processText(opening)
   }
 
+  // 渲染内容区域（显示加载状态或实际内容）
+  const renderContentArea = (renderContent: (data: ScriptData) => React.ReactNode) => {
+    if (isLoading) {
+      return (
+        <div className="flex items-center justify-center py-12">
+          <div className="text-center space-y-3">
+            <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+            <p className="text-sm text-muted-foreground">Loading Bee Movie script...</p>
+          </div>
+        </div>
+      )
+    }
+
+    if (error && !scriptData) {
+      return (
+        <div className="flex items-center justify-center py-12">
+          <div className="text-center space-y-4">
+            <p className="text-sm text-destructive">{error}</p>
+            <Button 
+              variant="outline" 
+              onClick={() => loadScriptData()}
+              disabled={isLoading}
+            >
+              Try Again
+            </Button>
+          </div>
+        </div>
+      )
+    }
+
+    if (scriptData) {
+      return renderContent(scriptData)
+    }
+
+    return null
+  }
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -138,8 +242,16 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Button onClick={() => copyToClipboard(getOpeningSection())} className="w-full">
-              <Copy className="mr-2 h-4 w-4" />
+            <Button 
+              onClick={() => handleCopyAction(getOpeningSection)} 
+              className="w-full"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Copy className="mr-2 h-4 w-4" />
+              )}
               Copy Opening
             </Button>
           </CardContent>
@@ -153,8 +265,17 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Button onClick={() => copyToClipboard(getRandomSegment())} variant="secondary" className="w-full">
-              <Shuffle className="mr-2 h-4 w-4" />
+            <Button 
+              onClick={() => handleCopyAction(getRandomSegment)} 
+              variant="secondary" 
+              className="w-full"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Shuffle className="mr-2 h-4 w-4" />
+              )}
               Random Quote
             </Button>
           </CardContent>
@@ -169,11 +290,16 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
           </CardHeader>
           <CardContent>
             <Button
-              onClick={() => copyToClipboard(removeSpaces(getOpeningSection()))}
+              onClick={() => handleCopyAction((data) => removeSpaces(getOpeningSection(data)))}
               variant="outline"
               className="w-full"
+              disabled={isLoading}
             >
-              <Copy className="mr-2 h-4 w-4" />
+              {isLoading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Copy className="mr-2 h-4 w-4" />
+              )}
               Copy Compressed
             </Button>
           </CardContent>
@@ -215,17 +341,22 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
             <CardContent>
               <div className="space-y-4">
                 <div className="rounded-lg bg-muted p-4 font-mono text-sm max-h-96 overflow-y-auto">
-                  {processText(scriptContent)}
+                  {renderContentArea((data) => processText(data.scriptContent))}
                 </div>
-                <div className="flex gap-2">
-                  <Button onClick={() => copyToClipboard(processText(scriptContent))}>
-                    <Copy className="mr-2 h-4 w-4" />
-                    Copy Full Bee Movie Script
-                  </Button>
-                  <Badge variant="secondary">
-                    {processText(scriptContent).length.toLocaleString()} characters
-                  </Badge>
-                </div>
+                {scriptData && (
+                  <div className="flex gap-2">
+                    <Button 
+                      onClick={() => copyToClipboard(processText(scriptData.scriptContent))}
+                      disabled={isLoading}
+                    >
+                      <Copy className="mr-2 h-4 w-4" />
+                      Copy Full Bee Movie Script
+                    </Button>
+                    <Badge variant="secondary">
+                      {processText(scriptData.scriptContent).length.toLocaleString()} characters
+                    </Badge>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -243,17 +374,22 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
             <CardContent>
               <div className="space-y-4">
                 <div className="rounded-lg bg-muted p-4 font-mono text-sm break-all max-h-96 overflow-y-auto">
-                  {removeSpaces(processText(scriptContent))}
+                  {renderContentArea((data) => removeSpaces(processText(data.scriptContent)))}
                 </div>
-                <div className="flex gap-2">
-                  <Button onClick={() => copyToClipboard(removeSpaces(processText(scriptContent)))}>
-                    <Copy className="mr-2 h-4 w-4" />
-                    Copy No Spaces Bee Script
-                  </Button>
-                  <Badge variant="secondary">
-                    {removeSpaces(processText(scriptContent)).length.toLocaleString()} chars
-                  </Badge>
-                </div>
+                {scriptData && (
+                  <div className="flex gap-2">
+                    <Button 
+                      onClick={() => copyToClipboard(removeSpaces(processText(scriptData.scriptContent)))}
+                      disabled={isLoading}
+                    >
+                      <Copy className="mr-2 h-4 w-4" />
+                      Copy No Spaces Bee Script
+                    </Button>
+                    <Badge variant="secondary">
+                      {removeSpaces(processText(scriptData.scriptContent)).length.toLocaleString()} chars
+                    </Badge>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -292,29 +428,31 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
                 </div>
 
                 <div className="max-h-96 overflow-y-auto space-y-6">
-                  {segmentText(processText(scriptContent), platformLimit).map((segment, index) => (
-                    <div key={index}>
-                      {index > 0 && (
-                        <div className="flex items-center my-6">
-                          <div className="flex-1 h-px bg-border"></div>
-                          <div className="px-3 text-xs text-muted-foreground bg-background">Segment {index + 1}</div>
-                          <div className="flex-1 h-px bg-border"></div>
-                        </div>
-                      )}
+                  {renderContentArea((data) => 
+                    segmentText(processText(data.scriptContent), platformLimit).map((segment, index) => (
+                      <div key={index}>
+                        {index > 0 && (
+                          <div className="flex items-center my-6">
+                            <div className="flex-1 h-px bg-border"></div>
+                            <div className="px-3 text-xs text-muted-foreground bg-background">Segment {index + 1}</div>
+                            <div className="flex-1 h-px bg-border"></div>
+                          </div>
+                        )}
 
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2">
-                          <Badge>Segment {index + 1}</Badge>
-                          <Badge variant="secondary">{segment.length} chars</Badge>
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2">
+                            <Badge>Segment {index + 1}</Badge>
+                            <Badge variant="secondary">{segment.length} chars</Badge>
+                          </div>
+                          <div className="rounded-lg bg-muted p-4 font-mono text-sm">{segment}</div>
+                          <Button size="sm" onClick={() => copyToClipboard(segment)}>
+                            <Copy className="mr-2 h-3 w-3" />
+                            Copy Segment {index + 1}
+                          </Button>
                         </div>
-                        <div className="rounded-lg bg-muted p-4 font-mono text-sm">{segment}</div>
-                        <Button size="sm" onClick={() => copyToClipboard(segment)}>
-                          <Copy className="mr-2 h-3 w-3" />
-                          Copy Segment {index + 1}
-                        </Button>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </div>
             </CardContent>
@@ -333,17 +471,19 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
         </CardHeader>
         <CardContent>
           <div className="grid gap-3 md:grid-cols-1 lg:grid-cols-2">
-            {popularQuotes.map((quote, index) => {
-              const processedQuote = processText(quote)
-              return (
-                <div key={index} className="flex items-center justify-between rounded-lg border border-border p-3">
-                  <span className="text-sm font-mono flex-1 mr-3">{processedQuote}</span>
-                  <Button size="sm" variant="outline" onClick={() => copyToClipboard(processedQuote)}>
-                    <Copy className="h-3 w-3" />
-                  </Button>
-                </div>
-              )
-            })}
+            {renderContentArea((data) => 
+              data.popularQuotes.map((quote, index) => {
+                const processedQuote = processText(quote)
+                return (
+                  <div key={index} className="flex items-center justify-between rounded-lg border border-border p-3">
+                    <span className="text-sm font-mono flex-1 mr-3">{processedQuote}</span>
+                    <Button size="sm" variant="outline" onClick={() => copyToClipboard(processedQuote)}>
+                      <Copy className="h-3 w-3" />
+                    </Button>
+                  </div>
+                )
+              })
+            )}
           </div>
         </CardContent>
       </Card>
@@ -356,24 +496,28 @@ export default function BeeMovieScriptTools({ scriptContent, popularQuotes }: Be
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-3">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary">
-                {processText(scriptContent).length.toLocaleString()}
-              </div>
-              <div className="text-sm text-muted-foreground">Total Characters</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary">
-                {processText(scriptContent).split(" ").length.toLocaleString()}
-              </div>
-              <div className="text-sm text-muted-foreground">Total Words</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary">
-                {removeSpaces(processText(scriptContent)).length.toLocaleString()}
-              </div>
-              <div className="text-sm text-muted-foreground">No Spaces Length</div>
-            </div>
+            {renderContentArea((data) => (
+              <>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">
+                    {processText(data.scriptContent).length.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Total Characters</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">
+                    {processText(data.scriptContent).split(" ").length.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Total Words</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">
+                    {removeSpaces(processText(data.scriptContent)).length.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-muted-foreground">No Spaces Length</div>
+                </div>
+              </>
+            ))}
           </div>
         </CardContent>
       </Card>
