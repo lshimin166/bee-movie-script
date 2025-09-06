@@ -50,7 +50,7 @@ export function KeyFeatures() {
             <Card key={index} className="h-full">
               <CardHeader>
                 <feature.icon className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>{feature.title}</CardTitle>
+                <CardTitle><h3>{feature.title}</h3></CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">{feature.description}</p>

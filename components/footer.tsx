@@ -9,7 +9,7 @@ export function Footer() {
           <div className="md:col-span-1 space-y-4">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🐝</span>
-              <span className="font-bold text-lg">BeeScript</span>
+              <span className="font-bold text-lg">Bee Movie Script</span>
             </div>
             <p className="text-muted-foreground text-sm">
               BeeScript is the ultimate platform for generating Bee Movie script content, memes, and sharing the
@@ -31,7 +31,7 @@ export function Footer() {
           {/* Right side - Navigation columns */}
           <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-semibold mb-4">Tools</h3>
+              <div className="font-semibold mb-4">Tools</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#script" className="hover:text-foreground">
@@ -57,7 +57,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Resources</h3>
+              <div className="font-semibold mb-4">Resources</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#features" className="hover:text-foreground">
@@ -83,7 +83,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Community</h3>
+              <div className="font-semibold mb-4">Community</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#" className="hover:text-foreground">
@@ -112,7 +112,7 @@ export function Footer() {
 
         {/* Bottom section */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">© 2025 BeeScript. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© 2025 Bee Movie Script. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground">
               Privacy Policy

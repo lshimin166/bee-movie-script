@@ -276,7 +276,7 @@ export default function BeeMovieScriptTools() {
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2 text-lg">
               <Zap className="h-5 w-5" />
-              Quick Copy Bee Script
+              <h3>Quick Copy Bee Movie Script</h3>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -299,7 +299,7 @@ export default function BeeMovieScriptTools() {
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2 text-lg">
               <Shuffle className="h-5 w-5" />
-              Random Bee Movie Meme
+              <h3>Random Bee Movie Meme</h3>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -323,7 +323,7 @@ export default function BeeMovieScriptTools() {
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2 text-lg">
               <Share2 className="h-5 w-5" />
-              No Spaces Script
+              <h3>No Spaces Script</h3>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -351,26 +351,26 @@ export default function BeeMovieScriptTools() {
             value="normal"
             className="data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md data-[state=active]:border data-[state=active]:border-border/20 hover:bg-background/60 transition-all duration-200 font-medium rounded-lg mx-1 text-sm py-2 text-muted-foreground"
           >
-            Full Bee Movie Script
+            <h3>Full Bee Movie Script</h3>
           </TabsTrigger>
           <TabsTrigger
             value="nospaces"
             className="data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md data-[state=active]:border data-[state=active]:border-border/20 hover:bg-background/60 transition-all duration-200 font-medium rounded-lg mx-1 text-sm py-2 text-muted-foreground"
           >
-            No Spaces Version
+            <h3>No Spaces</h3>
           </TabsTrigger>
           <TabsTrigger
             value="segments"
             className="data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md data-[state=active]:border data-[state=active]:border-border/20 hover:bg-background/60 transition-all duration-200 font-medium rounded-lg mx-1 text-sm py-2 text-muted-foreground"
           >
-            Auto Segments
+            <h3>Auto Segments</h3>
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="normal" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Complete Bee Movie Script Copy and Paste</CardTitle>
+              <CardTitle>Whole Bee Movie Script Copy and Paste</CardTitle>
               <CardDescription>
                 The entire Bee Movie script ready for copying and sharing. This is the full script of the Bee Movie
                 {hideCharacters && " (dialogue only)"}{hideBlankLines && " (compact view)"}
@@ -501,7 +501,7 @@ export default function BeeMovieScriptTools() {
       {/* 热门语录 */}
       <Card className="mt-8" id="quotes">
         <CardHeader>
-          <CardTitle>Popular Bee Movie Meme Quotes</CardTitle>
+          <CardTitle><h3>Popular Bee Movie Meme Quotes</h3></CardTitle>
           <CardDescription>
             Quick access to the most popular Bee Movie script quotes for memes and copy paste
             {hideCharacters && " (dialogue only)"}{hideBlankLines && " (compact view)"}
@@ -529,7 +529,7 @@ export default function BeeMovieScriptTools() {
       {/* 使用统计 */}
       <Card className="mt-16" id="stats">
         <CardHeader>
-          <CardTitle>Bee Movie Script Statistics</CardTitle>
+          <CardTitle><h3>Bee Movie Script Statistics</h3></CardTitle>
           <CardDescription>Complete analysis of the entire Bee Movie script content</CardDescription>
         </CardHeader>
         <CardContent>

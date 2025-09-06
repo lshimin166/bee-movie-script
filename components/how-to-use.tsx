@@ -4,15 +4,15 @@ export function HowToUse() {
   const steps = [
     {
       number: 1,
-      title: "Choose Your Format",
-      description:
-        "Select from three options: Full Bee Movie Script for complete text, No Spaces version for compressed sharing, or Auto Segments for platform-specific character limits.",
-    },
-    {
-      number: 2,
       title: "Configure Display Options",
       description:
         'Toggle the "Hide character names" option if you want only dialogue from the Bee Movie script. This is useful for different meme formats and sharing preferences.',
+    },
+    {
+      number: 2,
+      title: "Choose Your Format",
+      description:
+        "Select from three options: Full Bee Movie Script for complete text, No Spaces version for compressed sharing, or Auto Segments for platform-specific character limits.",
     },
     {
       number: 3,
@@ -34,7 +34,7 @@ export function HowToUse() {
                   <span className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
                     {step.number}
                   </span>
-                  {step.title}
+                  <h3>{step.title}</h3>
                 </CardTitle>
               </CardHeader>
               <CardContent>

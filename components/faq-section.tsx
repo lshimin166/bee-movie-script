@@ -52,7 +52,7 @@ export function FAQSection() {
                 onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
               >
                 <CardTitle className="flex items-center justify-between text-lg">
-                  {faq.question}
+                  <h3>{faq.question}</h3>
                   <ChevronDown
                     className={`h-5 w-5 transition-transform ${expandedFaq === index ? "rotate-180" : ""}`}
                   />

@@ -20,7 +20,7 @@ export function WhatIsBeeMovieScript() {
           <Card className="text-center">
             <CardHeader className="pb-3">
               <Film className="h-8 w-8 mx-auto mb-2 text-primary" />
-              <CardTitle className="text-lg">Original Movie</CardTitle>
+              <CardTitle className="text-lg"><h3>Original Movie</h3></CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
@@ -33,7 +33,7 @@ export function WhatIsBeeMovieScript() {
           <Card className="text-center">
             <CardHeader className="pb-3">
               <Users className="h-8 w-8 mx-auto mb-2 text-primary" />
-              <CardTitle className="text-lg">Internet Meme</CardTitle>
+              <CardTitle className="text-lg"><h3>Internet Meme</h3></CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
@@ -46,7 +46,7 @@ export function WhatIsBeeMovieScript() {
           <Card className="text-center">
             <CardHeader className="pb-3">
               <Zap className="h-8 w-8 mx-auto mb-2 text-primary" />
-              <CardTitle className="text-lg">Copy & Paste</CardTitle>
+              <CardTitle className="text-lg"><h3>Copy & Paste</h3></CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
@@ -59,7 +59,7 @@ export function WhatIsBeeMovieScript() {
           <Card className="text-center">
             <CardHeader className="pb-3">
               <Globe className="h-8 w-8 mx-auto mb-2 text-primary" />
-              <CardTitle className="text-lg">Cultural Impact</CardTitle>
+              <CardTitle className="text-lg"><h3>Cultural Impact</h3></CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
@@ -71,31 +71,31 @@ export function WhatIsBeeMovieScript() {
         </div>
 
         <div className="bg-background rounded-lg p-8 border">
-          <h3 className="text-xl font-semibold mb-4">Why Use Our Bee Movie Script Tool?</h3>
+          <h2 className="text-xl font-semibold mb-4">Why Use Our Bee Movie Script Tool?</h2>
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <h4 className="font-medium mb-2">Complete Bee Movie Script Access</h4>
+              <h3 className="font-medium mb-2">Complete Bee Movie Script Access</h3>
               <p className="text-sm text-muted-foreground">
                 Get the entire Bee Movie script in multiple formats - normal text, no spaces version for character
                 limits, and auto-segmented for different platforms like Discord and Twitter.
               </p>
             </div>
             <div>
-              <h4 className="font-medium mb-2">Popular Bee Movie Quotes</h4>
+              <h3 className="font-medium mb-2">Popular Bee Movie Quotes</h3>
               <p className="text-sm text-muted-foreground">
                 Quick access to the most famous lines from the Bee Movie script, including "According to all known laws
                 of aviation" and "Ya like jazz?" for instant meme creation.
               </p>
             </div>
             <div>
-              <h4 className="font-medium mb-2">Flexible Script Options</h4>
+              <h3 className="font-medium mb-2">Flexible Script Options</h3>
               <p className="text-sm text-muted-foreground">
                 Choose between the full Bee Movie script with character names or dialogue-only versions. Perfect for
                 different use cases and platform requirements.
               </p>
             </div>
             <div>
-              <h4 className="font-medium mb-2">Easy Sharing</h4>
+              <h3 className="font-medium mb-2">Easy Sharing</h3>
               <p className="text-sm text-muted-foreground">
                 One-click copy functionality makes sharing the Bee Movie script effortless. Whether you need the entire
                 script or just a segment, we've got you covered.
