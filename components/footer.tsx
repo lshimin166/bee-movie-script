@@ -12,17 +12,17 @@ export function Footer() {
               <span className="font-bold text-lg">Bee Movie Script</span>
             </div>
             <p className="text-muted-foreground text-sm">
-              BeeScript is the ultimate platform for generating Bee Movie script content, memes, and sharing the
+              Bee Movie Script is the ultimate platform for generating Bee Movie script content, memes, and sharing the
               legendary internet phenomenon instantly.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a href="https://beemoviescript.org/" className="text-muted-foreground hover:text-foreground">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a href="https://github.com/lshimin166/bee-movie-script" className="text-muted-foreground hover:text-foreground">
                 <Github className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a href="mailto:hi@beemoviescript.org" className="text-muted-foreground hover:text-foreground">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -31,52 +31,21 @@ export function Footer() {
           {/* Right side - Navigation columns */}
           <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <div className="font-semibold mb-4">Tools</div>
+              <div className="font-semibold mb-4">Quick Links</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#script" className="hover:text-foreground">
-                    Script Generator
+                  <a href="#bee-movie-script-tools" className="hover:text-foreground">
+                    Copy and Paste
                   </a>
                 </li>
-                <li>
-                  <a href="#quotes" className="hover:text-foreground">
-                    Quote Library
-                  </a>
-                </li>
-                <li>
-                  <a href="#segments" className="hover:text-foreground">
-                    Auto Segments
-                  </a>
-                </li>
-                <li>
-                  <a href="#compress" className="hover:text-foreground">
-                    No Spaces Tool
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <div className="font-semibold mb-4">Resources</div>
-              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#features" className="hover:text-foreground">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#how-to-use" className="hover:text-foreground">
-                    How to Use
+                  Features
                   </a>
                 </li>
                 <li>
                   <a href="#faq" className="hover:text-foreground">
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href="#stats" className="hover:text-foreground">
-                    Script Stats
+                    Faq
                   </a>
                 </li>
               </ul>
@@ -86,27 +55,18 @@ export function Footer() {
               <div className="font-semibold mb-4">Community</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground">
+                  <a href="https://github.com/lshimin166/bee-movie-script" className="hover:text-foreground">
                     GitHub
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground">
-                    Discord
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground">
-                    Twitter / X
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground">
-                    Reddit
+                  <a href="https://beemovie.fandom.com/wiki/Bee_Movie/Transcript" className="hover:text-foreground">
+                    Bee Movie Wiki
                   </a>
                 </li>
               </ul>
             </div>
+
           </div>
         </div>
 

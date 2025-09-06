@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* 全局平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: oklch(0.97 0.05 85); /* Soft honey yellow background */
   --foreground: oklch(0.15 0 0); /* Black text */
