@@ -55,12 +55,12 @@ export function Footer() {
               <div className="font-semibold mb-4">Community</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="https://github.com/lshimin166/bee-movie-script" className="hover:text-foreground">
+                  <a href="https://github.com/lshimin166/bee-movie-script" className="hover:text-foreground" target="_blank">
                     GitHub
                   </a>
                 </li>
                 <li>
-                  <a href="https://beemovie.fandom.com/wiki/Bee_Movie/Transcript" className="hover:text-foreground">
+                  <a href="https://beemovie.fandom.com/wiki/Bee_Movie/Transcript" className="hover:text-foreground" target="_blank">
                     Bee Movie Wiki
                   </a>
                 </li>

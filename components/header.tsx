@@ -73,6 +73,7 @@ export function Header() {
                 href="https://github.com/lshimin166/bee-movie-script" 
                 className="text-base hover:text-foreground transition-colors py-2"
                 onClick={closeMenu}
+                target="_blank"
               >
                 GitHub
               </a>
