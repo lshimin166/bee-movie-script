@@ -18,6 +18,7 @@ export default function BeeMovieScriptTools() {
   const [selectedFormat, setSelectedFormat] = useState<"normal" | "nospaces" | "segments">("normal")
   const [platformLimit, setPlatformLimit] = useState(2000)
   const [hideCharacters, setHideCharacters] = useState(false)
+  const [hideBlankLines, setHideBlankLines] = useState(false)
   const [scriptData, setScriptData] = useState<ScriptData | null>(null)
   const [isLoading, setIsLoading] = useState(true) // 初始为true，页面加载时就开始加载
   const [error, setError] = useState<string | null>(null)
@@ -117,8 +118,19 @@ export default function BeeMovieScriptTools() {
       .join("\n") // 保持换行符，不要用空格连接
   }
 
+  const removeBlankLines = (text: string) => {
+    return text.split('\n').filter(line => line.trim().length > 0).join('\n')
+  }
+
   const processText = (text: string) => {
-    return hideCharacters ? removeCharacterNames(text) : text
+    let result = text
+    if (hideCharacters) {
+      result = removeCharacterNames(result)
+    }
+    if (hideBlankLines) {
+      result = removeBlankLines(result)
+    }
+    return result
   }
 
   const removeSpaces = (text: string) => text.replace(/\s+/g, "")
@@ -212,7 +224,18 @@ export default function BeeMovieScriptTools() {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <section className="container mx-auto px-4 py-16">
+      {/* Section Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
+        Bee Movie Script Copy and Paste Tool
+        </h2>
+        <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
+          Choose from multiple formats: normal script, no-spaces compressed version, auto-segmented for platform limits, 
+          and toggle display options like character names and blank lines.
+        </p>
+      </div>
+
       {/* 显示选项 */}
       <Card className="mb-8">
         <CardHeader className="pb-3">
@@ -222,16 +245,28 @@ export default function BeeMovieScriptTools() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center space-x-2">
-            <Switch id="hide-characters" checked={hideCharacters} onCheckedChange={setHideCharacters} />
-            <label htmlFor="hide-characters" className="text-sm font-medium">
-              Hide character names (dialogue only)
-            </label>
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <Switch id="hide-characters" checked={hideCharacters} onCheckedChange={setHideCharacters} />
+              <label htmlFor="hide-characters" className="text-sm font-medium">
+                Hide character names (dialogue only)
+              </label>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              When enabled, only dialogue and narration will be shown, character names will be removed from the Bee
+              Movie script
+            </p>
+            
+            <div className="flex items-center space-x-2">
+              <Switch id="hide-blank-lines" checked={hideBlankLines} onCheckedChange={setHideBlankLines} />
+              <label htmlFor="hide-blank-lines" className="text-sm font-medium">
+                Hide blank lines (compact view)
+              </label>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              When enabled, all empty lines will be removed to create a more compact text format
+            </p>
           </div>
-          <p className="text-xs text-muted-foreground mt-2">
-            When enabled, only dialogue and narration will be shown, character names will be removed from the Bee
-            Movie script
-          </p>
         </CardContent>
       </Card>
 
@@ -338,7 +373,7 @@ export default function BeeMovieScriptTools() {
               <CardTitle>Complete Bee Movie Script Copy and Paste</CardTitle>
               <CardDescription>
                 The entire Bee Movie script ready for copying and sharing. This is the full script of the Bee Movie
-                {hideCharacters && " (dialogue only)"}
+                {hideCharacters && " (dialogue only)"}{hideBlankLines && " (compact view)"}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -371,7 +406,7 @@ export default function BeeMovieScriptTools() {
               <CardTitle>Bee Movie Script No Spaces Version</CardTitle>
               <CardDescription>
                 Compressed Bee Movie script version for platforms with character limits or spam detection
-                {hideCharacters && " (dialogue only)"}
+                {hideCharacters && " (dialogue only)"}{hideBlankLines && " (compact view)"}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -404,7 +439,7 @@ export default function BeeMovieScriptTools() {
               <CardTitle>Auto-Segmented Bee Movie Script for Platforms</CardTitle>
               <CardDescription>
                 Automatically split the entire Bee Movie script for Discord (2000 chars), Twitter, etc.
-                {hideCharacters && " (dialogue only)"}
+                {hideCharacters && " (dialogue only)"}{hideBlankLines && " (compact view)"}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -469,7 +504,7 @@ export default function BeeMovieScriptTools() {
           <CardTitle>Popular Bee Movie Meme Quotes</CardTitle>
           <CardDescription>
             Quick access to the most popular Bee Movie script quotes for memes and copy paste
-            {hideCharacters && " (dialogue only)"}
+            {hideCharacters && " (dialogue only)"}{hideBlankLines && " (compact view)"}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -524,6 +559,6 @@ export default function BeeMovieScriptTools() {
           </div>
         </CardContent>
       </Card>
-    </main>
+    </section>
   )
 }

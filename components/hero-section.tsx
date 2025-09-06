@@ -42,7 +42,7 @@ export function HeroSection({ onCopyScript, onRandomQuote }: HeroSectionProps) {
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-balance">
                 Bee Movie Script
-                <span className="text-yellow-600 dark:text-yellow-400 block">Copy and Paste Tool</span>
+                <span className="text-yellow-600 dark:text-yellow-400 block"> Copy and Paste</span>
               </h1>
 
               <p className="text-lg text-muted-foreground text-pretty max-w-lg">
@@ -112,7 +112,7 @@ export function HeroSection({ onCopyScript, onRandomQuote }: HeroSectionProps) {
 
           {/* Right Image */}
           <div className="lg:col-span-2 flex justify-center">
-            <div className="relative w-full max-w-sm">
+            <div className="relative w-full">
               <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jDIYZGh54ZtqscUZyGnUW1authQyMZ.png"
                 alt="Bee Movie character with glasses at computer - Bee Movie Script generator"
