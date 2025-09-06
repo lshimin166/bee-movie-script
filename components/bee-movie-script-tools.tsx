@@ -224,7 +224,7 @@ export default function BeeMovieScriptTools() {
   }
 
   return (
-    <section className="container mx-auto px-4 py-16">
+    <section id="bee-movie-script-tools" className="container mx-auto px-4 py-16">
       {/* Section Header */}
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">

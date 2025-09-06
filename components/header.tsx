@@ -9,23 +9,17 @@ export function Header() {
           </div>
 
           <div className="hidden md:flex items-center gap-6">
-            <a href="#script" className="text-sm hover:text-foreground transition-colors">
-              Bee Movie Script
-            </a>
-            <a href="#quotes" className="text-sm hover:text-foreground transition-colors">
-              Bee Movie Quotes
+            <a href="#bee-movie-script-tools" className="text-sm hover:text-foreground transition-colors">
+              Copy and Paste
             </a>
             <a href="#features" className="text-sm hover:text-foreground transition-colors">
-              Script Features
+              Features
             </a>
-            <a href="#how-to-use" className="text-sm hover:text-foreground transition-colors">
-              How to Use
+            <a href="#faq" className="text-sm hover:text-foreground transition-colors">
+              faq
             </a>
-            <a href="#" className="text-sm hover:text-foreground transition-colors">
+            <a href="https://github.com/lshimin166/bee-movie-script" className="text-sm hover:text-foreground transition-colors">
               GitHub
-            </a>
-            <a href="#" className="text-sm hover:text-foreground transition-colors">
-              Discord
             </a>
           </div>
         </nav>
