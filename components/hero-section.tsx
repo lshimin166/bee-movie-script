@@ -115,8 +115,8 @@ export function HeroSection({ onCopyScript, onRandomQuote, onCopyLink }: HeroSec
           <div className="lg:col-span-2 flex justify-center">
             <div className="relative w-full">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jDIYZGh54ZtqscUZyGnUW1authQyMZ.png"
-                alt="Bee Movie character with glasses at computer - Bee Movie Script generator"
+                src="https://cdn.resio.top/images/bee-movie-script.png"
+                alt="Bee Movie Script"
                 className="w-full h-auto rounded-2xl shadow-2xl object-cover"
               />
             </div>

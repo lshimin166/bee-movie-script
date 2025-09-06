@@ -8,6 +8,8 @@ const geist = GeistSans
 
 const geistMono = GeistMono
 
+const siteUrl = process.env.NEXT_PUBLIC_WEB_URL || 'https://beemoviescript.org'
+
 export const metadata: Metadata = {
   title: "Bee Movie Script - Complete Copy and Paste | The Entire Bee Movie Script",
   description:
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Get the complete Bee Movie script for copy and paste. Access the entire Bee Movie script, no spaces version, auto segments, and popular quotes.",
     type: "website",
-    url: "https://beemoviescript.com",
+    url: `${siteUrl}/`,
   },
   twitter: {
     card: "summary_large_image",
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
   },
   robots: "index, follow",
   alternates: {
-    canonical: "https://beemoviescript.com",
+    canonical: `${siteUrl}/`,
   },
     generator: 'v0.app'
 }

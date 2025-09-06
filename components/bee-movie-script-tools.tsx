@@ -372,8 +372,17 @@ export default function BeeMovieScriptTools() {
             <CardHeader>
               <CardTitle>Whole Bee Movie Script Copy and Paste</CardTitle>
               <CardDescription>
-                The entire Bee Movie script ready for copying and sharing. This is the full script of the Bee Movie
-                {hideCharacters && " (dialogue only)"}{hideBlankLines && " (compact view)"}
+                The complete official Bee Movie script transcript sourced from the authoritative{" "}
+                <a 
+                  href="https://beemovie.fandom.com/wiki/Bee_Movie/Transcript" 
+                  target="_blank" 
+                  rel="noopener noreferrer nofollow"
+                  className="text-primary-foreground hover:underline"
+                >
+                  Bee Movie Wiki
+                </a>
+                . This is the full, accurate script of the entire Bee Movie ready for copying and sharing
+                {hideCharacters && " (dialogue only)"}{hideBlankLines && " (compact view)"}.
               </CardDescription>
             </CardHeader>
             <CardContent>
