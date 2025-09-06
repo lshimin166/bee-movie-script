@@ -3,10 +3,10 @@ export function Header() {
     <header className="border-b border-border bg-background">
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <span className="text-2xl">🐝</span>
             <span className="font-bold text-xl">Bee Movie Script</span>
-          </div>
+          </a>
 
           <div className="hidden md:flex items-center gap-6">
             <a href="#bee-movie-script-tools" className="text-sm hover:text-foreground transition-colors">
