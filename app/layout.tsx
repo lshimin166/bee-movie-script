@@ -32,6 +32,12 @@ export const metadata: Metadata = {
     description: "Complete Bee Movie script copy paste tool. Get entire script, no spaces version & meme quotes for Discord, Twitter and more.",
   },
   robots: "index, follow",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   alternates: {
     canonical: `${siteUrl}/`,
   },

@@ -272,17 +272,18 @@ export default function BeeMovieScriptTools() {
 
       {/* 快捷操作 */}
       <div className="mb-8 grid gap-4 md:grid-cols-3">
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Zap className="h-5 w-5" />
-              <h3>Quick Copy Bee Movie Script</h3>
+        <Card className="quick-action-card">
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base md:text-lg">
+              <Zap className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+              <h3 className="block md:hidden">Quick Copy</h3>
+              <h3 className="hidden md:block">Quick Copy Bee Movie Script</h3>
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-0">
             <Button 
               onClick={() => handleCopyAction(getOpeningSection)} 
-              className="w-full"
+              className="w-full h-10"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -295,18 +296,19 @@ export default function BeeMovieScriptTools() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Shuffle className="h-5 w-5" />
-              <h3>Random Bee Movie Meme</h3>
+        <Card className="quick-action-card">
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base md:text-lg">
+              <Shuffle className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+              <h3 className="block md:hidden">Random Meme</h3>
+              <h3 className="hidden md:block">Random Bee Movie Meme</h3>
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-0">
             <Button 
               onClick={() => handleCopyAction(getRandomSegment)} 
               variant="secondary" 
-              className="w-full"
+              className="w-full h-10"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -319,18 +321,18 @@ export default function BeeMovieScriptTools() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Share2 className="h-5 w-5" />
+        <Card className="quick-action-card">
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base md:text-lg">
+              <Share2 className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
               <h3>No Spaces Script</h3>
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-0">
             <Button
               onClick={() => handleCopyAction((data) => removeSpaces(getOpeningSection(data)))}
               variant="outline"
-              className="w-full"
+              className="w-full h-10"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -346,24 +348,24 @@ export default function BeeMovieScriptTools() {
 
       {/* 主要内容 - 标签页 */}
       <Tabs value={selectedFormat} onValueChange={(value) => setSelectedFormat(value as any)} className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3 bg-muted p-2 rounded-xl h-14 border border-border/50">
+        <TabsList className="mobile-tabs-vertical w-full bg-muted p-2 rounded-xl border border-border/50">
           <TabsTrigger
             value="normal"
-            className="data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md data-[state=active]:border data-[state=active]:border-border/20 hover:bg-background/60 transition-all duration-200 font-medium rounded-lg mx-1 text-sm py-2 text-muted-foreground"
+            className="w-full data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md hover:bg-background/60 transition-all duration-200 font-medium rounded-lg py-3 px-4 text-sm text-muted-foreground text-center h-auto min-h-[44px] flex items-center justify-center"
           >
-            <h3>Full Bee Movie Script</h3>
+            <span className="block">Full Script</span>
           </TabsTrigger>
           <TabsTrigger
             value="nospaces"
-            className="data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md data-[state=active]:border data-[state=active]:border-border/20 hover:bg-background/60 transition-all duration-200 font-medium rounded-lg mx-1 text-sm py-2 text-muted-foreground"
+            className="w-full data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md hover:bg-background/60 transition-all duration-200 font-medium rounded-lg py-3 px-4 text-sm text-muted-foreground text-center h-auto min-h-[44px] flex items-center justify-center"
           >
-            <h3>No Spaces</h3>
+            <span className="block">No Spaces</span>
           </TabsTrigger>
           <TabsTrigger
             value="segments"
-            className="data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md data-[state=active]:border data-[state=active]:border-border/20 hover:bg-background/60 transition-all duration-200 font-medium rounded-lg mx-1 text-sm py-2 text-muted-foreground"
+            className="w-full data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-md hover:bg-background/60 transition-all duration-200 font-medium rounded-lg py-3 px-4 text-sm text-muted-foreground text-center h-auto min-h-[44px] flex items-center justify-center"
           >
-            <h3>Auto Segments</h3>
+            <span className="block">Auto Segments</span>
           </TabsTrigger>
         </TabsList>
 
@@ -387,7 +389,7 @@ export default function BeeMovieScriptTools() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="rounded-lg bg-muted p-4 font-mono text-sm max-h-96 overflow-y-auto whitespace-pre-wrap">
+                <div className="rounded-lg bg-muted p-4 font-mono text-sm max-h-96 overflow-y-auto whitespace-pre-wrap overflow-x-auto">
                   {renderContentArea((data) => processText(data.scriptContent))}
                 </div>
                 {scriptData && (
@@ -420,7 +422,7 @@ export default function BeeMovieScriptTools() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="rounded-lg bg-muted p-4 font-mono text-sm break-all max-h-96 overflow-y-auto">
+                <div className="rounded-lg bg-muted p-4 font-mono text-sm break-all max-h-96 overflow-y-auto overflow-x-auto">
                   {renderContentArea((data) => removeSpaces(processText(data.scriptContent)))}
                 </div>
                 {scriptData && (
@@ -491,7 +493,7 @@ export default function BeeMovieScriptTools() {
                             <Badge>Segment {index + 1}</Badge>
                             <Badge variant="secondary">{segment.length} chars</Badge>
                           </div>
-                          <div className="rounded-lg bg-muted p-4 font-mono text-sm whitespace-pre-wrap">{segment}</div>
+                          <div className="rounded-lg bg-muted p-4 font-mono text-sm whitespace-pre-wrap overflow-x-auto break-words">{segment}</div>
                           <Button size="sm" onClick={() => copyToClipboard(segment)}>
                             <Copy className="mr-2 h-3 w-3" />
                             Copy Segment {index + 1}
@@ -523,7 +525,7 @@ export default function BeeMovieScriptTools() {
                 const processedQuote = processText(quote)
                 return (
                   <div key={index} className="flex items-start justify-between rounded-lg border border-border p-3">
-                    <span className="text-sm font-mono flex-1 mr-3 whitespace-pre-wrap">{processedQuote}</span>
+                    <span className="text-sm font-mono flex-1 mr-3 whitespace-pre-wrap break-words overflow-hidden">{processedQuote}</span>
                     <Button size="sm" variant="outline" onClick={() => copyToClipboard(processedQuote)}>
                       <Copy className="h-3 w-3" />
                     </Button>

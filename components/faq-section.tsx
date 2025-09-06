@@ -1,11 +1,6 @@
-"use client"
-
-import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronDown } from "lucide-react"
 
 export function FAQSection() {
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
 
   const faqs = [
     {
@@ -44,25 +39,17 @@ export function FAQSection() {
     <section id="faq" className="py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-6">
           {faqs.map((faq, index) => (
             <Card key={index}>
-              <CardHeader
-                className="cursor-pointer"
-                onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-              >
-                <CardTitle className="flex items-center justify-between text-lg">
+              <CardHeader className="pb-1">
+                <CardTitle className="text-lg">
                   <h3>{faq.question}</h3>
-                  <ChevronDown
-                    className={`h-5 w-5 transition-transform ${expandedFaq === index ? "rotate-180" : ""}`}
-                  />
                 </CardTitle>
               </CardHeader>
-              {expandedFaq === index && (
-                <CardContent>
-                  <p className="text-muted-foreground">{faq.answer}</p>
-                </CardContent>
-              )}
+              <CardContent className="pt-0">
+                <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+              </CardContent>
             </Card>
           ))}
         </div>
