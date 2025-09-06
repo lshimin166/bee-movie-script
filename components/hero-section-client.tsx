@@ -46,6 +46,8 @@ export default function HeroSectionClient() {
       toast({
         title: "Copied! 🐝",
         description: "Bee Movie script copied to clipboard successfully!",
+        variant: "default",
+        className: "bg-white border-green-200 shadow-lg",
       })
     } catch (err) {
       toast({

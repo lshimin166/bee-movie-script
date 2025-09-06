@@ -123,3 +123,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Toast 组件自定义样式 */
+@layer components {
+  [data-sonner-toast] {
+    @apply bg-white border border-border shadow-lg;
+  }
+  
+  [data-sonner-toast][data-styled="true"] {
+    @apply bg-white text-foreground;
+  }
+  
+  .dark [data-sonner-toast] {
+    @apply bg-gray-900 border-gray-700;
+  }
+  
+  .dark [data-sonner-toast][data-styled="true"] {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  /* 成功状态的Toast */
+  [data-sonner-toast][data-type="success"] {
+    @apply bg-green-50 border-green-200;
+  }
+  
+  .dark [data-sonner-toast][data-type="success"] {
+    @apply bg-green-950 border-green-800;
+  }
+  
+  /* 错误状态的Toast */
+  [data-sonner-toast][data-type="error"] {
+    @apply bg-red-50 border-red-200;
+  }
+  
+  .dark [data-sonner-toast][data-type="error"] {
+    @apply bg-red-950 border-red-800;
+  }
+}

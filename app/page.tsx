@@ -12,12 +12,14 @@ export default function BeeMovieScriptPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <HeroSectionClient />
+
+      <BeeMovieScriptTools />
 
       <WhatIsBeeMovieScript />
 
-      <BeeMovieScriptTools />
+
 
       <KeyFeatures />
       <HowToUse />

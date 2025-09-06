@@ -85,6 +85,8 @@ export default function BeeMovieScriptTools() {
       toast({
         title: "Copied! 🐝",
         description: "Bee Movie script copied to clipboard successfully!",
+        variant: "default",
+        className: "bg-white border-green-200 shadow-lg",
       })
     } catch (err) {
       toast({
@@ -112,7 +114,7 @@ export default function BeeMovieScriptTools() {
         return line
       })
       .filter((line) => line.length > 0)
-      .join(" ")
+      .join("\n") // 保持换行符，不要用空格连接
   }
 
   const processText = (text: string) => {
@@ -124,19 +126,20 @@ export default function BeeMovieScriptTools() {
   const segmentText = (text: string, limit: number) => {
     const segments = []
     let currentSegment = ""
-    const words = text.split(" ")
+    // 使用正则分割，保持空白字符（包括换行符）
+    const words = text.split(/(\s+)/)
 
     for (const word of words) {
-      if ((currentSegment + " " + word).length > limit && currentSegment) {
-        segments.push(currentSegment.trim())
+      if ((currentSegment + word).length > limit && currentSegment.trim()) {
+        segments.push(currentSegment)
         currentSegment = word
       } else {
-        currentSegment += (currentSegment ? " " : "") + word
+        currentSegment += word
       }
     }
 
-    if (currentSegment) {
-      segments.push(currentSegment.trim())
+    if (currentSegment.trim()) {
+      segments.push(currentSegment)
     }
 
     return segments
@@ -340,7 +343,7 @@ export default function BeeMovieScriptTools() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="rounded-lg bg-muted p-4 font-mono text-sm max-h-96 overflow-y-auto">
+                <div className="rounded-lg bg-muted p-4 font-mono text-sm max-h-96 overflow-y-auto whitespace-pre-wrap">
                   {renderContentArea((data) => processText(data.scriptContent))}
                 </div>
                 {scriptData && (
@@ -444,7 +447,7 @@ export default function BeeMovieScriptTools() {
                             <Badge>Segment {index + 1}</Badge>
                             <Badge variant="secondary">{segment.length} chars</Badge>
                           </div>
-                          <div className="rounded-lg bg-muted p-4 font-mono text-sm">{segment}</div>
+                          <div className="rounded-lg bg-muted p-4 font-mono text-sm whitespace-pre-wrap">{segment}</div>
                           <Button size="sm" onClick={() => copyToClipboard(segment)}>
                             <Copy className="mr-2 h-3 w-3" />
                             Copy Segment {index + 1}
@@ -475,8 +478,8 @@ export default function BeeMovieScriptTools() {
               data.popularQuotes.map((quote, index) => {
                 const processedQuote = processText(quote)
                 return (
-                  <div key={index} className="flex items-center justify-between rounded-lg border border-border p-3">
-                    <span className="text-sm font-mono flex-1 mr-3">{processedQuote}</span>
+                  <div key={index} className="flex items-start justify-between rounded-lg border border-border p-3">
+                    <span className="text-sm font-mono flex-1 mr-3 whitespace-pre-wrap">{processedQuote}</span>
                     <Button size="sm" variant="outline" onClick={() => copyToClipboard(processedQuote)}>
                       <Copy className="h-3 w-3" />
                     </Button>
@@ -506,7 +509,7 @@ export default function BeeMovieScriptTools() {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary">
-                    {processText(data.scriptContent).split(" ").length.toLocaleString()}
+                    {processText(data.scriptContent).split(/\s+/).filter(word => word.length > 0).length.toLocaleString()}
                   </div>
                   <div className="text-sm text-muted-foreground">Total Words</div>
                 </div>
