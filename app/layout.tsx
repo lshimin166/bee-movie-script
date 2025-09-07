@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
+import Analytics from "@/components/analytics";
 
 const geist = GeistSans;
 
@@ -12,11 +13,14 @@ const siteUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://beemoviescript.org";
 
 export const metadata: Metadata = {
   title: "Bee Movie Script - The Entire Script Copy and Paste",
-  description: "Complete Bee Movie script copy paste tool. Get entire script, no spaces version, auto segments for Discord/Twitter & popular meme quotes.",
-  keywords: "bee movie script, copy paste, full script, meme quotes, entire script, bee movie text",
+  description:
+    "Complete Bee Movie script copy paste tool. Get entire script, no spaces version, auto segments for Discord/Twitter & popular meme quotes.",
+  keywords:
+    "bee movie script, copy paste, full script, meme quotes, entire script, bee movie text",
   openGraph: {
     title: "Bee Movie Script - The Entire Script Copy and Paste",
-      description: "Complete Bee Movie script copy paste tool. Get entire script, no spaces version, auto segments for Discord/Twitter & meme quotes.",
+    description:
+      "Complete Bee Movie script copy paste tool. Get entire script, no spaces version, auto segments for Discord/Twitter & meme quotes.",
     type: "website",
     images: [
       {
@@ -29,7 +33,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Bee Movie Script - Copy and Paste Tool",
-    description: "Complete Bee Movie script copy paste tool. Get entire script, no spaces version & meme quotes for Discord, Twitter and more.",
+    description:
+      "Complete Bee Movie script copy paste tool. Get entire script, no spaces version & meme quotes for Discord, Twitter and more.",
   },
   robots: "index, follow",
   viewport: {
@@ -53,7 +58,10 @@ export default function RootLayout({
       lang="en"
       className={`${geist.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
