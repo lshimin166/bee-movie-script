@@ -1,17 +1,15 @@
-import { Header } from "@/components/header"
 import HeroSectionClient from "@/components/hero-section-client"
 import { WhatIsBeeMovieScript } from "@/components/what-is-bee-movie-script"
 import BeeMovieScriptTools from "@/components/bee-movie-script-tools"
 import { KeyFeatures } from "@/components/key-features"
 import { HowToUse } from "@/components/how-to-use"
 import { FAQSection } from "@/components/faq-section"
-import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function BeeMovieScriptPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+
 
       <HeroSectionClient />
 
@@ -24,7 +22,7 @@ export default function BeeMovieScriptPage() {
       <KeyFeatures />
       <HowToUse />
       <FAQSection />
-      <Footer />
+
 
       <Toaster />
     </div>

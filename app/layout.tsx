@@ -4,6 +4,9 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import Analytics from "@/components/analytics";
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+
 
 const geist = GeistSans;
 
@@ -59,7 +62,9 @@ export default function RootLayout({
       className={`${geist.variable} ${geistMono.variable} antialiased`}
     >
       <body className="font-sans">
+      <Header />
         {children}
+        <Footer />
         <Analytics />
       </body>
     </html>
