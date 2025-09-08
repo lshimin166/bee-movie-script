@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-  const closeMenu = () => setIsMenuOpen(false)
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header className="border-b border-border bg-background">
@@ -20,16 +20,34 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <a href="#bee-movie-script-tools" className="text-sm hover:text-foreground transition-colors">
+            <a className="hover:text-foreground" href="/whole-script">
+              Whole Script
+            </a>
+            <a
+              href="#bee-movie-script-tools"
+              className="text-sm hover:text-foreground transition-colors"
+            >
               Copy and Paste
             </a>
-            <a href="#features" className="text-sm hover:text-foreground transition-colors">
+            <a
+              href="#features"
+              className="text-sm hover:text-foreground transition-colors"
+            >
               Features
             </a>
-            <a href="#faq" className="text-sm hover:text-foreground transition-colors">
+            <a
+              href="#faq"
+              className="text-sm hover:text-foreground transition-colors"
+            >
               FAQ
             </a>
-            <a href="https://github.com/lshimin166/bee-movie-script" className="text-sm hover:text-foreground transition-colors">
+          </div>
+
+          <div className="hidden md:flex items-center gap-6">
+            <a
+              href="https://github.com/lshimin166/bee-movie-script"
+              className="text-sm hover:text-foreground transition-colors"
+            >
               GitHub
             </a>
           </div>
@@ -40,7 +58,11 @@ export function Header() {
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </nav>
 
@@ -48,29 +70,29 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-border">
             <div className="flex flex-col gap-4 mt-4">
-              <a 
-                href="#bee-movie-script-tools" 
+              <a
+                href="#bee-movie-script-tools"
                 className="text-base hover:text-foreground transition-colors py-2"
                 onClick={closeMenu}
               >
                 Copy and Paste
               </a>
-              <a 
-                href="#features" 
+              <a
+                href="#features"
                 className="text-base hover:text-foreground transition-colors py-2"
                 onClick={closeMenu}
               >
                 Features
               </a>
-              <a 
-                href="#faq" 
+              <a
+                href="#faq"
                 className="text-base hover:text-foreground transition-colors py-2"
                 onClick={closeMenu}
               >
                 FAQ
               </a>
-              <a 
-                href="https://github.com/lshimin166/bee-movie-script" 
+              <a
+                href="https://github.com/lshimin166/bee-movie-script"
                 className="text-base hover:text-foreground transition-colors py-2"
                 onClick={closeMenu}
                 target="_blank"
@@ -82,5 +104,5 @@ export function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }

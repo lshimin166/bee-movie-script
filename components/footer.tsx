@@ -33,6 +33,7 @@ export function Footer() {
             <div>
               <div className="font-semibold mb-4">Quick Links</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
+
                 <li>
                   <a href="#bee-movie-script-tools" className="hover:text-foreground">
                     Copy and Paste
