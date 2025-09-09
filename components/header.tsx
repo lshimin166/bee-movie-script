@@ -20,23 +20,26 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <a className="hover:text-foreground" href="/whole-script">
-              Whole Script
-            </a>
             <a
-              href="#bee-movie-script-tools"
+              href="/#bee-movie-script-tools"
               className="text-sm hover:text-foreground transition-colors"
             >
               Copy and Paste
             </a>
             <a
-              href="#features"
+              className="text-sm hover:text-foreground transition-colors"
+              href="/whole-script"
+            >
+              Whole Script
+            </a>
+            <a
+              href="/#features"
               className="text-sm hover:text-foreground transition-colors"
             >
               Features
             </a>
             <a
-              href="#faq"
+              href="/#faq"
               className="text-sm hover:text-foreground transition-colors"
             >
               FAQ
