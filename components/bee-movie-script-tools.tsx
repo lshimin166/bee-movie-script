@@ -506,7 +506,7 @@ export default function BeeMovieScriptTools() {
                     </Badge>
                   </div>
                 )}
-                <div className="rounded-lg bg-muted p-4 font-mono text-sm break-all max-h-200 overflow-y-auto overflow-x-auto">
+                <div className="rounded-lg bg-muted p-4 font-mono text-sm break-all max-h-100 overflow-y-auto overflow-x-auto">
                   {renderContentArea((data) =>
                     removeSpaces(processText(data.scriptContent))
                   )}
