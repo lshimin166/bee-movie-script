@@ -57,7 +57,7 @@ export function DownloadButton({ content }: DownloadButtonProps) {
       ) : (
         <>
           <Download className="h-5 w-5 mr-2" />
-          Download
+          Download TXT
         </>
       )}
     </Button>

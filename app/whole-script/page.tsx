@@ -14,23 +14,23 @@ import { DownloadPdfButton } from './download-pdf-button'
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: 'Complete Bee Movie Script - Full Text & Download | Bee Movie Script',
-  description: 'Read and download the complete Bee Movie script. Full text with 2,568 lines, 15,789 words. Perfect for memes, copypasta, and entertainment.',
-  keywords: 'bee movie script, complete script, full text, download, meme, copypasta, DreamWorks, animation script',
+  title: 'Bee Movie Full Script - Full Text & Download PDF',
+  description: 'Read and download the whole Bee Movie script. Full text with 2,568 lines, 15,789 words. Perfect for memes, copypasta, and entertainment.',
+  keywords: 'bee movie script, complete script, full text, download, meme, copypasta, DreamWorks',
   openGraph: {
-    title: 'Complete Bee Movie Script - Full Text & Download',
+    title: 'Bee Movie Full Script - Full Text & Download PDF',
     description: 'Read and download the complete Bee Movie script. Full text with 2,568 lines, 15,789 words.',
     type: 'article',
-    url: 'https://yoursite.com/whole-script',
+    url: 'https://beemoviescript.org/whole-script',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Complete Bee Movie Script - Full Text & Download',
+    title: 'Bee Movie Full Script - Full Text & Download',
     description: 'Read and download the complete Bee Movie script. Perfect for memes and entertainment.',
   },
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://yoursite.com/whole-script',
+    canonical: 'https://beemoviescript.org/whole-script',
   }
 }
 
@@ -85,24 +85,13 @@ export default async function FullScriptPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "Complete Bee Movie Script - Full Text",
-            "description": "The complete script of Bee Movie (2007) by DreamWorks Animation",
+            "headline": "Bee Movie Full Script - Full Text & Download PDF | Bee Movie Script",
+            "description": "Read and download the whole Bee Movie script. Full text with 2,568 lines, 15,789 words. Perfect for memes, copypasta, and entertainment.",
             "author": {
               "@type": "Organization",
-              "name": "DreamWorks Animation"
+              "name": "https://beemoviescript.org/#author"
             },
-            "datePublished": "2007-11-02",
-            "wordCount": estimatedWords,
-            "articleBody": scriptContent.substring(0, 500) + "...",
-            "about": {
-              "@type": "Movie",
-              "name": "Bee Movie",
-              "dateCreated": "2007",
-              "director": {
-                "@type": "Person",
-                "name": "Steve Hickner"
-              }
-            }
+            "datePublished": "2025-09-09",
           })
         }}
       />
@@ -136,10 +125,10 @@ export default async function FullScriptPage() {
                 <Film className="h-10 w-10 text-white" />
               </div> */}
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                🐝 Bee Movie - Complete Script
+                🐝 Bee Movie Full Script - Full Text & Download PDF
               </h1>
               <p className="text-xl text-yellow-100 max-w-2xl mx-auto mb-6">
-                The entire script from the 2007 DreamWorks Animation film. Perfect for reading, sharing, or creating memes.
+              Read and download the whole Bee Movie script. Full text with 2,568 lines, 15,789 words. Perfect for memes, copypasta, and entertainment.
               </p>
               
               {/* Stats */}
@@ -201,9 +190,24 @@ export default async function FullScriptPage() {
           {/* Full Script Card */}
           <Card className="mb-8 shadow-lg border-yellow-200">
             <CardHeader>
-              <CardTitle className="text-xl">Full Script Content</CardTitle>
+              <CardTitle className="text-xl"><h2>Full Script Content</h2></CardTitle>
               <CardDescription>
                 Complete, unabridged script text. Use the buttons above to copy or download.
+              </CardDescription>
+              <CardDescription>
+                The complete official Bee Movie script transcript sourced from
+                the authoritative{" "}
+                <a
+                  href="https://beemovie.fandom.com/wiki/Bee_Movie/Transcript"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="text-primary-foreground hover:underline"
+                >
+                  Bee Movie Wiki
+                </a>
+                . This is the full, accurate script of the entire Bee Movie
+                ready for copying and sharing
+
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -267,6 +271,101 @@ export default async function FullScriptPage() {
               </CardContent>
             </Card>
           </div>
+
+          {/* FAQ Section */}
+          <Card className="mt-12 shadow-lg border-yellow-200">
+            <CardHeader className="text-center bg-gradient-to-r from-yellow-100 to-orange-100">
+              <CardTitle className="text-2xl text-gray-900 flex items-center justify-center gap-2">
+                <FileText className="h-6 w-6 text-yellow-600" />
+                <h2>Frequently Asked Questions</h2>
+              </CardTitle>
+              <CardDescription className="text-lg">
+                Common questions about the Bee Movie full script download and usage
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="space-y-6">
+                <div className="border-b border-gray-200 pb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    How do I download the full Bee Movie script as PDF?
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Click the "Download PDF" button above to generate and download the complete Bee Movie script as a formatted PDF file. 
+                    The PDF includes all {totalLines.toLocaleString()} lines and {estimatedWords.toLocaleString()} words from the original script.
+                  </p>
+                </div>
+
+                <div className="border-b border-gray-200 pb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    Is this the complete and accurate Bee Movie script?
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Yes, this is the full, unabridged Bee Movie script sourced from the authoritative{" "}
+                    <a
+                      href="https://beemovie.fandom.com/wiki/Bee_Movie/Transcript"
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="text-yellow-700 hover:underline font-medium"
+                    >
+                      Bee Movie Wiki
+                    </a>
+                    . It includes every line of dialogue, character names, and stage directions from the entire 2007 DreamWorks Animation film.
+                  </p>
+                </div>
+
+                <div className="border-b border-gray-200 pb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    Can I copy the entire Bee Movie script text?
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Absolutely! Use the "Copy Full Script" button to copy the complete script text to your clipboard, 
+                    or "Copy No Spaces" for a compressed version. The full script contains approximately {estimatedChars.toLocaleString()} characters.
+                  </p>
+                </div>
+
+                <div className="border-b border-gray-200 pb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    What's the difference between the copy options?
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    "Copy Full Script" preserves all original formatting and line breaks. "Copy No Spaces" removes all whitespace, 
+                    creating a compressed version that's useful for platforms with strict character limits or to bypass certain filters.
+                  </p>
+                </div>
+
+                <div className="border-b border-gray-200 pb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    How long does it take to read the full Bee Movie script?
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Based on an average reading speed of 200 words per minute, the complete Bee Movie script takes approximately {readingTime} minutes to read. 
+                    The script contains {estimatedWords.toLocaleString()} words across {totalLines.toLocaleString()} lines.
+                  </p>
+                </div>
+
+                <div className="border-b border-gray-200 pb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    Can I use this Bee Movie script for memes and social media?
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Yes, the script is commonly used for memes, copypasta, and entertainment purposes under fair use. 
+                    However, please remember that the Bee Movie script is copyrighted by DreamWorks Animation, 
+                    so commercial usage would require proper licensing.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    What file formats are available for download?
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    You can download the Bee Movie script in multiple formats: as a plain text file (.txt) using the "Download TXT" button, 
+                    or as a formatted PDF document using the "Download PDF" button. Both contain the complete script content.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </>
