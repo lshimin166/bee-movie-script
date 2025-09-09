@@ -28,9 +28,9 @@ export function Header() {
             </a>
             <a
               className="text-sm hover:text-foreground transition-colors"
-              href="/whole-script"
+              href="/full-script"
             >
-              Whole Script
+              Full Script
             </a>
             <a
               href="/#features"

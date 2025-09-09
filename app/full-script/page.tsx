@@ -21,16 +21,17 @@ export const metadata: Metadata = {
     title: 'Bee Movie Full Script - Full Text & Download PDF',
     description: 'Read and download the complete Bee Movie script. Full text with 2,568 lines, 15,789 words.',
     type: 'article',
-    url: 'https://beemoviescript.org/whole-script',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Bee Movie Full Script - Full Text & Download',
-    description: 'Read and download the complete Bee Movie script. Perfect for memes and entertainment.',
+    url: 'https://beemoviescript.org/full-script/',
+    images: [
+      {
+        url: "https://cdn.resio.top/images/bee-movie-script.png",
+        alt: "Bee Movie Full Script",
+      },
+    ],
   },
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://beemoviescript.org/whole-script',
+    canonical: 'https://beemoviescript.org/full-script/',
   }
 }
 
@@ -190,7 +191,7 @@ export default async function FullScriptPage() {
           {/* Full Script Card */}
           <Card className="mb-8 shadow-lg border-yellow-200">
             <CardHeader>
-              <CardTitle className="text-xl"><h2>Full Script Content</h2></CardTitle>
+              <CardTitle className="text-xl"><h2 className='text-center mb-4 text-2xl'>Full Script Content</h2></CardTitle>
               <CardDescription>
                 Complete, unabridged script text. Use the buttons above to copy or download.
               </CardDescription>

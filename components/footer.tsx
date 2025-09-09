@@ -35,17 +35,22 @@ export function Footer() {
               <ul className="space-y-2 text-sm text-muted-foreground">
 
                 <li>
-                  <a href="#bee-movie-script-tools" className="hover:text-foreground">
+                  <a href="/#bee-movie-script-tools" className="hover:text-foreground">
                     Copy and Paste
                   </a>
                 </li>
                 <li>
-                  <a href="#features" className="hover:text-foreground">
+                  <a href="/full-script" className="hover:text-foreground">
+                    Full Script
+                  </a>
+                </li>
+                <li>
+                  <a href="/#features" className="hover:text-foreground">
                   Features
                   </a>
                 </li>
                 <li>
-                  <a href="#faq" className="hover:text-foreground">
+                  <a href="/#faq" className="hover:text-foreground">
                     Faq
                   </a>
                 </li>
